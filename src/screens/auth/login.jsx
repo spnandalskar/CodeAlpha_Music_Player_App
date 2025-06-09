@@ -4,7 +4,7 @@ import "./login.css";
 export default function Login() {
   const handleLogin = async () => {
     const url = await getAuthUrl();
-    window.location.href = url;
+    return (window.location.href = url);
   };
 
   return (
@@ -14,9 +14,9 @@ export default function Login() {
         alt="logo-spotify"
         className="logo"
       />
-      <a href={handleLogin}>
-        <div className="login-btn">LOG IN</div>
-      </a>
+      <button onClick={handleLogin} className="login-btn">
+        LOG IN
+      </button>
     </div>
   );
 }
