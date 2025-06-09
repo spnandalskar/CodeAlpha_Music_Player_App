@@ -18,7 +18,6 @@ export default function Library() {
 
   return (
     <div className="library-page">
-      <h2>Your Spotify Playlists 🎵</h2>
       {playlists.length === 0 ? (
         <p>Loading playlists...</p>
       ) : (
