@@ -22,7 +22,8 @@ export async function generateCodeChallenge(codeVerifier) {
 // Build the full Spotify auth URL
 export async function getAuthUrl() {
   const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
-  const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
+  const REDIRECT_URI =
+    "https://code-alpha-music-player-app.vercel.app/callback";
   const SCOPES = ["user-library-read", "playlist-read-private"];
 
   const codeVerifier = generateCodeVerifier();
@@ -44,7 +45,8 @@ export async function getAuthUrl() {
 
 export async function exchangeCodeForToken(code) {
   const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
-  const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
+  const REDIRECT_URI =
+    "https://code-alpha-music-player-app.vercel.app/callback";
   const code_verifier = localStorage.getItem("code_verifier");
 
   const body = new URLSearchParams({
