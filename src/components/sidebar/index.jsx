@@ -1,6 +1,6 @@
 import SidebarButton from "./sidebarButton";
 import "./sidebar.css";
-import profile from "../../../public/images/profile.svg";
+import profile from "../../../public/images/profile.jpg";
 import { MdFavorite } from "react-icons/md";
 import { FaGripfire, FaPlay } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
