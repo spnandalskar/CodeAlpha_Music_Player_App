@@ -1,11 +1,43 @@
-const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
-const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
-const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+// Generate a random code verifier
+export function generateCodeVerifier(length = 128) {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
 
-const SCOPES = ["user-library-read", "playlist-read-private"];
+// Generate the code challenge (SHA256 hash of verifier)
+export async function generateCodeChallenge(codeVerifier) {
+  const data = new TextEncoder().encode(codeVerifier);
+  const digest = await window.crypto.subtle.digest("SHA-256", data);
+  return btoa(String.fromCharCode(...new Uint8Array(digest)))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
 
-export const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
-  REDIRECT_URI
-)}&scope=${encodeURIComponent(
-  SCOPES.join("%20")
-)}&response_type=token&show_dialog=true`;
+// Build the full Spotify auth URL
+export async function getAuthUrl() {
+  const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
+  const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
+  const SCOPES = ["user-library-read", "playlist-read-private"];
+
+  const codeVerifier = generateCodeVerifier();
+  localStorage.setItem("code_verifier", codeVerifier);
+
+  const codeChallenge = await generateCodeChallenge(codeVerifier);
+
+  const authUrl =
+    `https://accounts.spotify.com/authorize?` +
+    `client_id=${CLIENT_ID}` +
+    `&response_type=code` +
+    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+    `&scope=${encodeURIComponent(SCOPES.join(" "))}` +
+    `&code_challenge=${codeChallenge}` +
+    `&code_challenge_method=S256`;
+
+  return authUrl;
+}

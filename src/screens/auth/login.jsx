@@ -1,7 +1,12 @@
-import { authUrl } from "../../spotify";
+import { getAuthUrl } from "../../spotify";
 import "./login.css";
 
 export default function login() {
+  const handleLogin = async () => {
+    const url = await getAuthUrl();
+    window.location.href = url;
+  };
+
   return (
     <div className="login-page">
       <img
@@ -9,7 +14,7 @@ export default function login() {
         alt="logo-spotify"
         className="logo"
       />
-      <a href={authUrl}>
+      <a href={handleLogin}>
         <div className="login-btn">LOG IN</div>
       </a>
     </div>
