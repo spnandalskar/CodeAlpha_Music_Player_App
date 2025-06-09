@@ -46,7 +46,7 @@ export default function Library() {
               <p className="playlist-subtitle">{playlist.tracks.total} Songs</p>
               <div className="playlist-fade">
                 <IconContext.Provider
-                  value={{ size: "50px", color: "#222831" }}
+                  value={{ size: "50px", color: "#DFD0B8" }}
                 >
                   <AiFillPlayCircle />
                 </IconContext.Provider>
