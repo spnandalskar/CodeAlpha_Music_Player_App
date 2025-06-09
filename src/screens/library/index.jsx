@@ -17,7 +17,7 @@ export default function Library() {
   }, []);
 
   return (
-    <div className="library-page">
+    <div className="screen-container">
       {playlists.length === 0 ? (
         <p>Loading playlists...</p>
       ) : (
