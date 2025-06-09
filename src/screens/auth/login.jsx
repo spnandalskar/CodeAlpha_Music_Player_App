@@ -1,4 +1,4 @@
-import { loginEndpoint } from "../../spotify";
+import { authUrl } from "../../spotify";
 import "./login.css";
 
 export default function login() {
@@ -9,7 +9,7 @@ export default function login() {
         alt="logo-spotify"
         className="logo"
       />
-      <a href={loginEndpoint}>
+      <a href={authUrl}>
         <div className="login-btn">LOG IN</div>
       </a>
     </div>

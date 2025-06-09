@@ -1,8 +1,11 @@
-const authEndpoint = "https://accounts.spotify.com/authorize?";
-const clientId = "13d88118a418403390c2919c149ffd3a";
-const redirectUri = "https://localhost:5173/callback";
-const scopes = ["user-library-read", "playlist-read-private"];
+const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
+const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
+const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+const RESPONSE_TYPE = "token";
+const SCOPES = "user-library-read playlist-read-private";
 
-export const loginEndpoint = `${authEndpoint}client_id=${clientId}&redirect_uri=${encodeURIComponent(
-  redirectUri
-)}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
+export const authUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
+  REDIRECT_URI
+)}&scope=${encodeURIComponent(
+  SCOPES
+)}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
