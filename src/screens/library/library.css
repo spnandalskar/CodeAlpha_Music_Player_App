@@ -11,7 +11,7 @@
 .playlist-card {
   position: relative;
   width: 20%;
-  height: 65%;
+  height: 67%;
   margin-bottom: 2%;
   padding: 1%;
   border-radius: 20px;
@@ -62,8 +62,14 @@
   bottom: 0;
   opacity: 0;
   width: 84%;
-  height: 64%;
+  height: 66%;
   border-radius: 20px;
+  background: #948979;
+  background: linear-gradient(
+    180deg,
+    rgba(148, 137, 121, 1) 10%,
+    rgba(223, 208, 184, 0.65) 100%
+  );
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
