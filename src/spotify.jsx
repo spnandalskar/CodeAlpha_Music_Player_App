@@ -74,3 +74,26 @@ export async function exchangeCodeForToken(code) {
     return null;
   }
 }
+
+export async function fetchUserProfile() {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    console.error("No access token found.");
+    return null;
+  }
+
+  const res = await fetch("https://api.spotify.com/v1/me", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    console.error("Failed to fetch user profile");
+    return null;
+  }
+
+  const data = await res.json();
+  return data;
+}

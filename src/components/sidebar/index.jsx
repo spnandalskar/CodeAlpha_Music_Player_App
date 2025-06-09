@@ -6,12 +6,38 @@ import { FaGripfire, FaPlay } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoLibrary } from "react-icons/io5";
 import { MdSpaceDashboard } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { fetchUserProfile } from "../../spotify"; // adjust path as per your structure
 
 export default function Sidebar() {
+  const [profileData, setProfileData] = useState(null);
+
+  useEffect(() => {
+    async function loadProfile() {
+      const data = await fetchUserProfile();
+      setProfileData(data);
+    }
+
+    loadProfile();
+  }, []);
+
   return (
     <>
       <div className="sidebar-container">
-        <img src={profile} className="profile-img" alt="profile" />
+        {profileData?.images?.length > 0 ? (
+          <img
+            src={profileData.images[0].url}
+            className="profile-img"
+            alt={profileData.display_name}
+            title={profileData.display_name}
+          />
+        ) : (
+          <img src={profile} className="profile-img" alt="default profile" />
+        )}
+        <p className="username">
+          {profileData?.display_name ? profileData.display_name : "Loading..."}
+        </p>
+
         <div>
           <SidebarButton title="Library" to="/home" icon={<IoLibrary />} />
           <SidebarButton
