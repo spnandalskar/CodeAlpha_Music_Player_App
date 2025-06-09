@@ -11,7 +11,7 @@
 .playlist-card {
   position: relative;
   width: 15%;
-  height: 35%;
+  height: auto;
   margin-bottom: 2%;
   padding: 1%;
   border-radius: 20px;
