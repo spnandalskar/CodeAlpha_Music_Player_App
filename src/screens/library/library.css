@@ -11,7 +11,7 @@
 .playlist-card {
   position: relative;
   width: 20%;
-  height: 50%;
+  min-height: 250px;
   margin-bottom: 2%;
   padding: 1%;
   border-radius: 20px;
@@ -33,6 +33,7 @@
   width: 100%;
   aspect-ratio: 1;
   border-radius: 15px;
+  object-fit: cover;
 }
 
 .playlist-title {
@@ -63,7 +64,7 @@
   width: 84%;
   height: 34%;
   border-radius: 20px;
-  background-color: linaar-gradient(
+  background: linaar-gradient(
     180deg,
     rgba(54, 69, 98, 0) 10%,
     rgba(54, 69, 98, 1) 100%
