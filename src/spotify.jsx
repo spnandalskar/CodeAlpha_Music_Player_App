@@ -97,3 +97,26 @@ export async function fetchUserProfile() {
   const data = await res.json();
   return data;
 }
+
+export async function fetchUserPlaylists() {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    console.error("No access token found.");
+    return null;
+  }
+
+  const res = await fetch("https://api.spotify.com/v1/me/playlists", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    console.error("Failed to fetch playlists");
+    return null;
+  }
+
+  const data = await res.json();
+  return data.items;
+}
