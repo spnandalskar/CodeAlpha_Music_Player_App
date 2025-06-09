@@ -47,8 +47,9 @@ export default function Library() {
               <div className="playlist-fade">
                 <IconContext.Provider
                   value={{ size: "80px", color: "#948979" }}
-                ></IconContext.Provider>
-                <AiFillPlayCircle />
+                >
+                  <AiFillPlayCircle />
+                </IconContext.Provider>
               </div>
             </div>
           ))}
