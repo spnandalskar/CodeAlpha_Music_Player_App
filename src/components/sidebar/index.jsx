@@ -32,14 +32,7 @@ export default function Sidebar() {
             title={profileData.display_name}
           />
         ) : (
-          <div className="profile-img-container">
-            <img src={profile} className="profile-img" alt="default profile" />
-            <p className="username">
-              {profileData?.display_name
-                ? profileData.display_name
-                : "Loading..."}
-            </p>
-          </div>
+          <img src={profile} className="profile-img" alt="default profile" />
         )}
 
         <div>
