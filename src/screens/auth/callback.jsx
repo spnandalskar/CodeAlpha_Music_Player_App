@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // src/screens/auth/Callback.jsx
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
