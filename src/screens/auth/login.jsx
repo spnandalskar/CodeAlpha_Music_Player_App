@@ -1,7 +1,7 @@
 import { getAuthUrl } from "../../spotify";
 import "./login.css";
 
-export default function login() {
+export default function Login() {
   const handleLogin = async () => {
     const url = await getAuthUrl();
     window.location.href = url;
