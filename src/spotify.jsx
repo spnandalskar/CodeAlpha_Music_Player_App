@@ -41,3 +41,34 @@ export async function getAuthUrl() {
 
   return authUrl;
 }
+
+export async function exchangeCodeForToken(code) {
+  const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
+  const REDIRECT_URI = "https://code-alpha-music-player-app.vercel.app/";
+  const code_verifier = localStorage.getItem("code_verifier");
+
+  const body = new URLSearchParams({
+    client_id: CLIENT_ID,
+    grant_type: "authorization_code",
+    code,
+    redirect_uri: REDIRECT_URI,
+    code_verifier,
+  });
+
+  const response = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: body.toString(),
+  });
+
+  const data = await response.json();
+  if (data.access_token) {
+    localStorage.setItem("access_token", data.access_token);
+    return data;
+  } else {
+    console.error("Token exchange failed:", data);
+    return null;
+  }
+}
