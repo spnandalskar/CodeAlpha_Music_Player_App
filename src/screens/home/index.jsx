@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "../../components/sidebar";
 import Login from "../../screens/auth/login.jsx";
-import Callback from "../auth/Callback";
+import Callback from "../../screens/auth/callback.jsx";
 import Favorites from "../favorites/index.jsx";
 import Feed from "../feed/index.jsx";
 import Library from "../library/index.jsx";
