@@ -1,12 +1,32 @@
-# React + Vite
+# 🎧 Music Player App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and elegant music player built using **React** and **Vanilla CSS**, powered by the **Spotify Web API**. It lets users stream 30-second previews of songs with smooth UI and animated audio feedback.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## Expanding the ESLint configuration
+👉 [Try the Live App](https://code-alpha-music-player-app.vercel.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> Best experienced on desktop browsers.
+
+---
+
+## ⚙️ Tech Stack
+
+- **Frontend:** React (Vite)
+- **Styling:** Vanilla CSS
+- **Audio API:** Spotify Web API
+- **Hooks Used:** `useState`, `useRef`, `useEffect`
+- **Deployment:** Vercel
+
+---
+
+## 🎯 Features
+
+- ⏯️ Play / Pause / Next / Previous track controls  
+- 🎵 Streams 30s track previews (via `preview_url`)
+- 🔁 Looping through playlist
+- 📸 Displays album art, song title, and artist(s)
+- ⭕ Animated progress circle with waveform
+- 🖥️ Fully responsive, minimal CSS styling
