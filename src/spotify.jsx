@@ -1,3 +1,7 @@
+import axios from "axios";
+
+const REDIRECT_URI = `${window.location.origin}/callback`;
+
 // Generate a random code verifier
 export function generateCodeVerifier(length = 128) {
   const chars =
@@ -22,10 +26,6 @@ export async function generateCodeChallenge(codeVerifier) {
 // Build the full Spotify auth URL
 export async function getAuthUrl() {
   const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
-  const REDIRECT_URI =
-    window.location.hostname === "localhost"
-      ? "https://localhost:5173/callback"
-      : "https://code-alpha-music-player-app.vercel.app/callback";
 
   const SCOPES = ["user-library-read", "playlist-read-private"];
 
@@ -48,10 +48,6 @@ export async function getAuthUrl() {
 
 export async function exchangeCodeForToken(code) {
   const CLIENT_ID = "daf660008efc4d4fadcca763ba4640c5";
-  const REDIRECT_URI =
-    window.location.hostname === "localhost"
-      ? "https://localhost:5173/callback"
-      : "https://code-alpha-music-player-app.vercel.app/callback";
 
   const code_verifier = localStorage.getItem("code_verifier");
 
@@ -126,3 +122,13 @@ export async function fetchUserPlaylists() {
   const data = await res.json();
   return data.items;
 }
+
+export const getApiClient = () => {
+  const token = localStorage.getItem("access_token");
+  return axios.create({
+    baseURL: "https://api.spotify.com/v1/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

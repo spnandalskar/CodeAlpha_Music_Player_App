@@ -1,0 +1,40 @@
+.controls-wrapper {
+  width: 50%;
+  margin-top: 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.action-btn {
+  width: 80px;
+  height: 50px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+}
+
+.play-pause-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #3e61d2;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: inset -4px -4px 10px #253c87, inset 4px 4px 10px 1px #93acff;
+}
+
+.play-pause-btn.active {
+  box-shadow: inset -4px -4px 10px #253c87, inset 4px 4px 10px 1px #93acff;
+}
+
+.play-pause-btn:hover {
+  transform: scale(1.1);
+}
